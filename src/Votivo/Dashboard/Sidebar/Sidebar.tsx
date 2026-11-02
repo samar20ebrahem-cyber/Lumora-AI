@@ -8,120 +8,60 @@ import {
     HiAcademicCap,
     HiArrowRightOnRectangle
 } from 'react-icons/hi2'
-import { useState } from 'react'
+import { BrowserRouter, Routes, Route } from 'react-router-dom'
 export function Sidebar() {
+
+    const navItems = [
+        { title: 'Dashboard', path: '/dashboard', icon: HiHome },
+        { title: 'My Files', path: '/files', icon: HiFolder },
+        { title: 'Mind Maps', path: '/mindmaps', icon: HiShare },
+        { title: 'AI Explanation', path: '/explanation', icon: HiBookOpen },
+        { title: 'Questions & Quizzes', path: '/quizzes', icon: HiClipboardDocumentList },
+        { title: 'Certificates', path: '/certificates', icon: HiAcademicCap },
+    ]
+
     return (
-        <>
-            <aside className="fixed left-0 top-[72px] z-40 h-[calc(100vh-72px)] w-64 bg-white border-r border-[#E8EBDD] px-4 py-6">
-                <ul className="flex flex-col gap-2">
+        <aside className="fixed left-0 top-[72px] z-40 h-[calc(100vh-72px)] w-16 border-r border-[#E8EBDD] bg-white px-2 py-6 transition-all duration-300 md:w-64 md:px-4">
 
-                    <li>
-                        <NavLink
-                            to="/dashboard"
-                            className={({ isActive }) =>
-                                `flex items-center gap-3 rounded-lg px-4 py-3 font-semibold transition-colors ${isActive
-                                    ? "bg-[#E8EBDD] text-[#34483A]"
-                                    : "text-[#667368] hover:bg-[#E8EBDD]"
-                                }`
-                            }
-                        >
-                            <HiHome className="h-5 w-5" />
-                            <span>Dashboard</span>
-                        </NavLink>
-                    </li>
+            <ul className="flex flex-col gap-2">
 
-                    <li>
-                        <NavLink
-                            to="/files"
-                            className={({ isActive }) =>
-                                `flex items-center gap-3 rounded-lg px-4 py-3 font-semibold transition-colors ${isActive
-                                    ? "bg-[#E8EBDD] text-[#34483A]"
-                                    : "text-[#667368] hover:bg-[#E8EBDD]"
-                                }`
-                            }
-                        >
-                            <HiFolder className="h-5 w-5" />
-                            <span>My Files</span>
-                        </NavLink>
-                    </li>
+                {navItems.map((item) => {
+                    const Icon = item.icon
 
-                    <li>
-                        <NavLink
-                            to="/mindmaps"
-                            className={({ isActive }) =>
-                                `flex items-center gap-3 rounded-lg px-4 py-3 font-semibold transition-colors ${isActive
-                                    ? "bg-[#E8EBDD] text-[#34483A]"
-                                    : "text-[#667368] hover:bg-[#E8EBDD]"
-                                }`
-                            }
-                        >
-                            <HiShare className="h-5 w-5" />
-                            <span>Mind Maps</span>
-                        </NavLink>
-                    </li>
+                    return (
+                        <li key={item.path}>
+                            <NavLink
+                                to={item.path}
+                                title={item.title}
+                                className={({ isActive }) =>
+                                    `flex items-center justify-center gap-3 rounded-lg px-2 py-3 font-semibold transition-colors md:justify-start md:px-4 ${isActive
+                                        ? 'bg-[#E8EBDD] text-[#34483A]'
+                                        : 'text-[#667368] hover:bg-[#E8EBDD]'
+                                    }`
+                                }
+                            >
+                                <Icon className="h-5 w-5 shrink-0" />
 
-                    <li>
-                        <NavLink
-                            to="/explanation"
-                            className={({ isActive }) =>
-                                `flex items-center gap-3 rounded-lg px-4 py-3 font-semibold transition-colors ${isActive
-                                    ? "bg-[#E8EBDD] text-[#34483A]"
-                                    : "text-[#667368] hover:bg-[#E8EBDD]"
-                                }`
-                            }
-                        >
-                            <HiBookOpen className="h-5 w-5" />
-                            <span>AI Explanation</span>
-                        </NavLink>
-                    </li>
+                                <span className="hidden whitespace-nowrap md:inline">
+                                    {item.title}
+                                </span>
+                            </NavLink>
+                        </li>
+                    )
+                })}
 
-                    <li>
-                        <NavLink
-                            to="/quizzes"
-                            className={({ isActive }) =>
-                                `flex items-center gap-3 rounded-lg px-4 py-3 font-semibold transition-colors ${isActive
-                                    ? "bg-[#E8EBDD] text-[#34483A]"
-                                    : "text-[#667368] hover:bg-[#E8EBDD]"
-                                }`
-                            }
-                        >
-                            <HiClipboardDocumentList className="h-5 w-5" />
-                            <span>Questions & Quizzes</span>
-                        </NavLink>
-                    </li>
+                <li className="mt-4">
+                    <button
+                        title="Log Out"
+                        className="flex w-full items-center justify-center gap-3 rounded-lg px-2 py-3 text-[#667368] transition-colors hover:bg-[#E8EBDD] md:justify-start md:px-4"
+                    >
+                        <HiArrowRightOnRectangle className="h-5 w-5 shrink-0" />
 
-                    <li>
-                        <NavLink
-                            to="/certificates"
-                            className={({ isActive }) =>
-                                `flex items-center gap-3 rounded-lg px-4 py-3 font-semibold transition-colors ${isActive
-                                    ? "bg-[#E8EBDD] text-[#34483A]"
-                                    : "text-[#667368] hover:bg-[#E8EBDD]"
-                                }`
-                            }
-                        >
-                            <HiAcademicCap className="h-5 w-5" />
-                            <span>Certificates</span>
-                        </NavLink>
-                    </li>
+                        <span className="hidden md:inline">Log Out</span>
+                    </button>
+                </li>
 
-                    <li>
-                        <NavLink
-                            to="/logout"
-                            className={({ isActive }) =>
-                                `flex items-center gap-3 rounded-lg px-4 py-3 font-semibold transition-colors ${isActive
-                                    ? "bg-[#E8EBDD] text-[#34483A]"
-                                    : "text-[#667368] hover:bg-[#E8EBDD]"
-                                }`
-                            }
-                        >
-                            <HiArrowRightOnRectangle className="h-5 w-5" />
-                            <span>Log Out</span>
-                        </NavLink>
-                    </li>
-
-                </ul>
-            </aside>
-        </>
+            </ul>
+        </aside>
     )
 }

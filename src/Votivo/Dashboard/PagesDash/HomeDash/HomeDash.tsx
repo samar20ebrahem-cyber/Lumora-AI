@@ -36,7 +36,7 @@ export function HomeDash() {
     return (
         <>
             <section className="flex flex-col gap-8 ">
-                <div className="relative overflow-hidden rounded-2xl bg-[#34483A] p-8 text-[#FCF4DC] shadow-sm">
+                <div className="relative overflow-hidden rounded-2xl bg-[#34483A] p-6 sm:p-8 text-[#FCF4DC] shadow-sm">
                     <div className="relative z-10 max-w-xl">
                         <p className="mb-3 text-sm font-medium text-[#D5DEC9]">Good evening</p>
                         <h1 className="mb-3 text-3xl font-bold">Ready to learn smarter?</h1>
