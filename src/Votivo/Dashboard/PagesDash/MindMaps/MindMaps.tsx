@@ -12,13 +12,13 @@ export function MindMaps() {
                     <HiCloudArrowUp className="mb-4 h-12 w-12 text-[#34483A]" />
                     <h2 className="text-lg font-bold text-[#34483A]">Drop your file here </h2>
                     <p className="mt-2 text-sm text-[#667368]"> Upload your lecture and let Lumora create your mind maps. </p>
-                    <p className="mt-1 text-xs text-[#8A968B]"> PDF, Word, PowerPoint, Excel, Images and more</p>
+                    <p className="mt-1 text-xs text-[#8A968B]"> PDF, Word, PowerPoint, Excel, and more</p>
 
                     <input
                         type="file"
                         id="fileUpload"
                         className="hidden"
-                        accept=".pdf,.doc,.docx,.ppt,.pptx,.xls,.xlsx,.csv,.txt,.rtf,.jpg,.jpeg,.png,.webp"
+                        accept=".pdf,.doc,.docx,.ppt,.pptx,.xls,.xlsx,.csv,.txt,.rtf,.webp"
                         onChange={(e) => {
                             const file = e.target.files?.[0]
 
